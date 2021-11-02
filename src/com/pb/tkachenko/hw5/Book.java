@@ -51,7 +51,7 @@ public class Book {
     }
 
     public void returnBook(String fio, int count) {
-        String b = "Петров В.В. вернул " + count + " книги. ";
+        String b = fio + " вернул " + count + " книги. ";
         System.out.println(b);
     }
 
