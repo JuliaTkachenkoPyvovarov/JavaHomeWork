@@ -31,3 +31,7 @@ public class Library {
     }
 
 }
+//создать массив Reader[] readerArray = new Reader[3];
+//получить свойства и методы:
+//bookArray[1].getTitle()
+//readerArray[3].takeBook(3);
