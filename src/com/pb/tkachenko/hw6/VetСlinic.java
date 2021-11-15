@@ -27,7 +27,7 @@ public class VetСlinic {
 
         Animal[] animals = new Animal[] {dog, cat, horse};
 
-        Veterinarian veterinarian = new Veterinarian();
+        Veterinarian veterinarian = new Veterinarian("Лошадь");
 
         //dog.makeNoise();
         //dog.eat();
@@ -38,12 +38,12 @@ public class VetСlinic {
 
 
         //итоговая попітка создания объекта через рефлексию - не получилось
-        //Class Veterinarian = Class.forName("com.pb.tkachenko.hw6.Veterinarian");
-        //Veterinarian veter = com.pb.tkachenko.hw6.Veterinarian.getConstructor(new Class[] {String.class});
+        //Class Veterinar = Class.forName("com.pb.tkachenko.hw6.Veterinarian");
+        //Veterinarian veter = Veterinar.getConstructor(new Class[] {String.class});
         //Object obj = veter.newInstance("Собака");
         //if (obj instanceof Veterinarian) {
-        //    ((Veterinarian) obj).treatAnimal(dog);
-         //   Object object = com.pb.tkachenko.hw6.Veterinarian.newInstance();
+        //((Veterinarian) obj).treatAnimal(dog);
+        //Object object = com.pb.tkachenko.hw6.Veterinarian.newInstance();
         //}
 
 
