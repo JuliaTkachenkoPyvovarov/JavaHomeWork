@@ -16,5 +16,4 @@ public class Tshirt extends Clothes implements ManClothes, WomenClothes {
     public void dressWomen() {
         System.out.println("Футболка: " + size + ", " + color + ", " + price + ".");
     }
-
 }

@@ -11,5 +11,4 @@ public class Skirt extends Clothes implements WomenClothes{
     public void dressWomen() {
         System.out.println("Юбка: " + size + ", " + color + ", " + price + ".");
     }
-
 }

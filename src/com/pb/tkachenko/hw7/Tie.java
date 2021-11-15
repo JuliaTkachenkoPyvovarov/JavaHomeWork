@@ -11,5 +11,4 @@ public class Tie extends Clothes implements ManClothes {
     public void dressMan () {
         System.out.println("Галстук: " + size + ", " + color + ", " + price + ".");
     }
-
 }

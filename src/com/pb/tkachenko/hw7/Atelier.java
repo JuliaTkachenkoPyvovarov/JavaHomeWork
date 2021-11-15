@@ -3,7 +3,7 @@ package com.pb.tkachenko.hw7;
 import com.sun.prism.paint.Color;
 
 public class Atelier {
-    public static void main(String[] args) {
+        public static void main(String[] args) {
         Pants pants = new Pants("XXS",35,"синий");
         Tshirt tshirt = new Tshirt("L",78,"белый");
         Skirt skirt = new Skirt("M", 79,"фиолетовый");
@@ -16,7 +16,6 @@ public class Atelier {
         dressMan(clothes);
         dressWomen(clothes);
     }
-
 
     public static void dressMan(Clothes[] clothes) {
         System.out.println("Одеваем мужчину: ");
@@ -43,7 +42,6 @@ public class Atelier {
                 ((Skirt) clothes1).dressWomen();
             }
         }
-
     }
 }
 

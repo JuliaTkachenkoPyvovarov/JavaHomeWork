@@ -8,8 +8,6 @@ public enum Size {
     L("large", "L"); //40
 
     // Создать конструктор принимающий на вход description и euroSize.
-
-
     Size(String description, String euroSize) {
     }
 
