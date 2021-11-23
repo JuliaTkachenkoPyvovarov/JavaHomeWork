@@ -13,7 +13,8 @@ public class Auth {
 
     public void signUp(String login, String password, String confirmPassword)  throws WrongLoginException, WrongPasswordException  {
 
-            if (Pattern.matches("[^a-zA-Z0-9] {5,20}", login)) { //(login.length() > 5 && login.length() < 20 ) {
+            if (login.length() > 5) {
+        //(Pattern.matches("[^a-zA-Z0-9] {5,20}", login)) { //(login.length() > 5 && login.length() < 20 ) {
                     String ldap = login;
                     System.out.println("Ваш логин "+ ldap);
             } else {
@@ -40,7 +41,7 @@ public class Auth {
             System.out.println("Регистрация успе!шна");
         } else {
             String message = "Связка логин-пароль не совпадает";
-            new WrongPasswordException(message);
+            throw new WrongPasswordException(message);
 
         }
 

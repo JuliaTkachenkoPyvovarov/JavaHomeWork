@@ -8,20 +8,19 @@ public class OnlineShop {
         Auth auth = new Auth("ldap","password1" );
         Scanner scan = new Scanner(System.in);
         System.out.println("Введите login для регистрации на сайте");
-        auth.login = scan.next();
-
-        try {
-            auth.signUp("ldap", "pass", "pass");
-        } catch (WrongPasswordException wl) {
-            System.out.println("Логин (login) некорректный");
-            wl.printStackTrace();
-        }
+        String login = scan.next();
 
         System.out.println("Введите пароль: ");
-        auth.password = scan.next();
+        String password = scan.next();
+
+        System.out.println("Подтвердите пароль: ");
+        String confirmPassword = scan.next();
 
         try {
-            auth.signUp("ldap", "pass", "pass");
+            auth.signUp(login, password, confirmPassword);
+        } catch (WrongLoginException ex) {
+            System.out.println("Пароль некорректный");
+            ex.printStackTrace();
         } catch (WrongPasswordException wl) {
             System.out.println("Логин (login) некорректный");
             wl.printStackTrace();
