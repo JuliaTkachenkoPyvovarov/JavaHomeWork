@@ -34,9 +34,9 @@ public class FileNumbers {
 // в который входят все числа из "numbers.txt" только все четные заменены на 0.
 
     public static void createOddNumbersFile() throws IOException {
-        Path path = Paths.get("D:\\Users\\dn110381tjv\\IdeaProjects\\JavaHomeWork\\src\\com\\pb\\tkachenko\\hw9\\numbers.txt");
+        Path path1 = Paths.get("D:\\Users\\dn110381tjv\\IdeaProjects\\JavaHomeWork\\src\\com\\pb\\tkachenko\\hw9\\numbers.txt");
         // read from file
-        try (BufferedReader reader = Files.newBufferedReader(path)) {
+        try (BufferedReader reader = Files.newBufferedReader(path1)) {
             String line;
             while ((line = reader.readLine()) != null) {
                 System.out.println(line);
@@ -47,26 +47,50 @@ public class FileNumbers {
         System.out.println("Файл прочитан!");
 
         // write to file
-        try (Scanner scan = new Scanner(new File("D:\\Users\\dn110381tjv\\IdeaProjects\\JavaHomeWork\\src\\com\\pb\\tkachenko\\hw9\\numbers.txt"))) {
-            FileWriter writter2 = new FileWriter("D:\\Users\\dn110381tjv\\IdeaProjects\\JavaHomeWork\\src\\com\\pb\\tkachenko\\hw9\\numbers.txt");
-            while (scan.hasNext()) {
-                Scanner str = new Scanner(scan.nextLine());
-                while (str.hasNextInt()) {
-                    int c = str.nextInt();
-                    if (c % 2 != 0) {
-                        //System.out.println("0");
-                        writter2.write(c + " ");
-                    } else {
-                        //System.out.println(c + " ");
-                        c = 0;
-                        writter2.write(c + " ");
-                    }
-                }
+        Path path2 = Paths.get("D:\\Users\\dn110381tjv\\IdeaProjects\\JavaHomeWork\\src\\com\\pb\\tkachenko\\hw9\\numbers.txt");
+        try (BufferedWriter writer = Files.newBufferedWriter(path2)) {
+            //int c = str.nextInt();
+           // if (c % 2 != 0) {
+                //System.out.println("0");
+               // writter2.write(c + " ");
+           // } else {
+                //System.out.println(c + " ");
+              //  c = 0;
+             //   writter2.write(c + " ");
             }
-            writter2.close();
-            System.out.println("Файл записан!");
-        } catch (IOException io) {
-            System.out.println("Файл не записан: " + io);
+         //   writer.write("Some test 123");
+       //     writer.newLine();
+     //       writer.write("Other string 456");
+      //  } catch (Exception ex) {
+        //    System.out.println("Error with file write: " + ex);
         }
-    }
-}
+        //System.out.println("Write to file \"" + path.toAbsolutePath() + "\" done!");
+        }
+
+
+
+
+
+
+        //try (Scanner scan = new Scanner(new File("D:\\Users\\dn110381tjv\\IdeaProjects\\JavaHomeWork\\src\\com\\pb\\tkachenko\\hw9\\numbers.txt"))) {
+        //    FileWriter writter2 = new FileWriter("D:\\Users\\dn110381tjv\\IdeaProjects\\JavaHomeWork\\src\\com\\pb\\tkachenko\\hw9\\numbers.txt");
+         //   while (scan.hasNext()) {
+       //         Scanner str = new Scanner(scan.nextLine());
+       //          while (str.hasNextInt()) {
+          //          int c = str.nextInt();
+            //        if (c % 2 != 0) {
+              //          //System.out.println("0");
+                //        writter2.write(c + " ");
+                  //  } else {
+                        //System.out.println(c + " ");
+                    //    c = 0;
+                      //  writter2.write(c + " ");
+                    //}
+          //      }
+           // }
+            //writter2.close();
+           // System.out.println("Файл записан!");
+     //   } catch (IOException io) {
+       //     System.out.println("Файл не записан: " + io);
+        //}
+

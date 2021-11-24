@@ -3,45 +3,37 @@ package com.pb.tkachenko.hw8;
 import  java.util.regex.Pattern;
 
 public class Auth {
-   String login;
-   String password;
-
-    public Auth(String login, String password) {
-        this.login = login;
-        this.password = password;
-    }
+   private String login;
+   private String password;
 
     public void signUp(String login, String password, String confirmPassword)  throws WrongLoginException, WrongPasswordException  {
 
-            if (login.length() > 5) {
-        //(Pattern.matches("[^a-zA-Z0-9] {5,20}", login)) { //(login.length() > 5 && login.length() < 20 ) {
-                    String ldap = login;
-                    System.out.println("Ваш логин "+ ldap);
+            if (Pattern.matches("[a-zA-Z0-9]{5,20}",login)) {
+                    System.out.println("Ваш логин "+ login);
             } else {
-                String message = "ошибка" ;
-                throw new WrongLoginException(message);
+                throw new WrongLoginException();
             }
 
-            if (password.length()>5 && Pattern.matches("[A-Za-z0-9_]", password)) {
+            if (!Pattern.matches("[A-Za-z0-9_]", password)) {
                 System.out.println("Пароль корректный");
             } else {
-                String message = "ошибка";
-                throw new WrongPasswordException(message);
+                throw new WrongPasswordException();
             }
 
             if (password.equals(confirmPassword)){
-                String password1 = password;
-                System.out.println("Пароль корректный");
+               System.out.println("Повтор пароля совпадает");
             } else {
                 throw new WrongPasswordException("Повторите пароль");
             }
+            this.login = login;
+            this.password = password;
     }
-    public void signIn(String ldap, String password1)  throws WrongPasswordException {
-        if (login.equals(ldap) && password.equals(password1)) {
-            System.out.println("Регистрация успе!шна");
+    public void signIn(String login, String password)  throws WrongPasswordException {
+        if (this.login.equals(login) && this.password.equals(password)) {
+            System.out.println("Вход на сайт выполнен успешно!");
         } else {
-            String message = "Связка логин-пароль не совпадает";
-            throw new WrongPasswordException(message);
+            //String message = "Связка логин-пароль не совпадает";
+            throw new WrongPasswordException();
 
         }
 
