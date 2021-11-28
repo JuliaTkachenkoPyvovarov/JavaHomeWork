@@ -8,6 +8,9 @@ public class OnlineShop {
 
         Auth auth = new Auth();
         Scanner scan = new Scanner(System.in);
+
+        signUp(scan, auth);
+        signIn(scan, auth);
     }
 
         private static void signUp(Scanner scan, Auth auth) {
@@ -39,7 +42,7 @@ public class OnlineShop {
             String password = scan.next();
 
             try {
-                auth.signIn("ldap", "password1");
+                auth.signIn(login, password);
             } catch (WrongPasswordException wl) {
                 System.out.println("Введены некорректные данные");
                 wl.printStackTrace();
