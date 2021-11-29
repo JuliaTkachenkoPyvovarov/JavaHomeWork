@@ -9,15 +9,22 @@ public class NumBox <T extends Number> {
     public NumBox(T[] nums) {
         this.nums = nums;
     }
+
     //конструктор принимающий параметр - максимальную длину массива +
     public NumBox(int maxsize) {
         nums = (T[]) new Number[maxsize];
         System.out.println("Максимальная длина массива = " + maxsize);
     }
 
+    //
+    public void print(){
+        int i = 0;
+        System.out.println("Элементы массива" + this.nums[i]);
+    }
+
     //метод T get(int index) возвращающий число по индексу
-    public T get(int index){
-        System.out.println(index + " елемент массива - "+ nums[index]);
+    public T get(int index) {
+        System.out.println(index + " елемент массива - " + nums[index]);
         return nums[index];
     }
 
@@ -25,7 +32,7 @@ public class NumBox <T extends Number> {
     public void add(Object integer, T num) throws Exception {
         int i = 0;
         int count = 0;
-        for(T a : nums) {
+        for (T a : nums) {
             if (a != null) {
                 count++;
                 System.out.println("Элемент " + a + " добавлен в массив");
@@ -35,67 +42,89 @@ public class NumBox <T extends Number> {
             System.out.println("Ошибка. Нет места в массиве!");
             Exception ex = new Exception();
             throw ex;
-        }else {
+        } else {
             this.nums[i] = num;
             i++;
         }
-        }
+    }
 
     //метод int length() возвращает текущее количество элементов
-    public int lenght(){
+    public int lenght() {
         int count = 0;
-        for(T i : nums){
-            if(!(i == null)){
+        for (T i : nums) {
+            if (i != null)
                 count++;
-            } else count+=0;
         }
-        System.out.println("В массиве "+ count + " елементов.");
+        System.out.println("В массиве " + count + " елементов.");
         return count;
     }
 
 
     //метод double average() - подсчет среднего арифметического среди элементов массива
-    public double average(){
+    public double average() {
         int i = 0;
-        int a = (int) nums[i].intValue();
-        if (i< nums.length) {
-            a = a + a;
-            a++;
-        } else {
-            a =  a / nums.length;
-        System.out.println("Среднее арифметическое = " + a);
+        int count = 0;
+        for (T a : nums) {
+            if (a != null) {
+                count++;
+            }
         }
-        return a;
-    };
 
-    //метод double sum() - сумма всех элементов массива.
-    public double sum(){
-        double sum1 = 0;
-        for (int i = 0; i < nums.length; i++) {
-            sum1 = (sum1 + nums[i].doubleValue());
-
-
-        //int i = 0;
-       // int a = (int) nums[i].intValue();
-       // if (i< nums.length) {
-        //    a = a + a;
-        //    a++;
-        } System.out.println("Сумма всех элементов массива = " + sum1);
-        return sum1;
+        int b = (int) nums[i].intValue();
+        double awer;
+        if (i < count) {
+            b = b + b;
+            b++;
+        }
+        awer = b / count;
+                System.out.println("Среднее арифметическое = " + b);
+        return awer;
     }
 
+    //метод double sum() - сумма всех элементов массива.
+    public double sum() {
+        double sum1 = 0;
+        int count = 0;
+        for (T a : nums) {
+            if (a != null) {
+                count++;
+                } else {
+                count += 0;}
+            }
+
+            for (int i = 0; i < count; i++) {
+                sum1 = (sum1 + nums[i].doubleValue());
+
+                System.out.println("Сумма всех элементов массива = " + sum1);
+
+                //int i = 0;
+                // int a = (int) nums[i].intValue();
+                // if (i< nums.length) {
+                //    a = a + a;
+                //    a++;
+            } return sum1;
+
+        }
+
+
+
     //метод T max() - максимальный элемент массива.
-    public int max(){
+    public int max() {
         int max1 = 0;
-        for (int i = 0; i < nums.length; i++) {
-            if (get(max1).intValue() < get(i).intValue()) {
+        int count = 0;
+        for (T a : nums) {
+            if (a != null)
+                count++;
+        }
+        for (int i = 0; i < count; i++) {
+            if (max1 < nums[i].intValue()) {
                 max1 = i;      //временное значение, для замены местами
             }
         }
 
-          // почему выдает исключение: NullPointerException ???
+        // почему выдает исключение: NullPointerException ???
         //for (int i = 0; i < nums.length; i++) {
-         //   if (nums[i].intValue() > max) {
+        //   if (nums[i].intValue() > max) {
         //        max = nums[i].intValue();
         //    }
 
@@ -110,4 +139,3 @@ public class NumBox <T extends Number> {
 //При подсчете воспользоваться тем, что у любого из объектов подклассов Number есть методы intValue, doubleValue, floatValue и другие.
 //
 //
-//Создать класс Main с методом main где протестировать полученный класс на примере NumBox<Float> и NumBox<Integer>.
