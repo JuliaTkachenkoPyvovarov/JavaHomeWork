@@ -4,12 +4,12 @@ public class NumBox <T extends Number> {
 
     //- массив из объектов класса T, инициализировать массив в конструкторе.
     public T[] nums;
+    //nums = (T[]) new nums);
 
     public NumBox(T[] nums) {
         this.nums = nums;
     }
-
-    //конструктор принимающий параметр - максимальную длину массива
+    //конструктор принимающий параметр - максимальную длину массива +
     public NumBox(int maxsize) {
         nums = (T[]) new Number[maxsize];
         System.out.println("Максимальная длина массива = " + maxsize);
@@ -17,30 +17,47 @@ public class NumBox <T extends Number> {
 
     //метод T get(int index) возвращающий число по индексу
     public T get(int index){
-        System.out.println((index+1) + "елемент массива - "+ nums[index]);
+        System.out.println(index + " елемент массива - "+ nums[index]);
         return nums[index];
     }
 
     //метод void add(T num) добавляющий число в массив. В случае если массив полон - выбросить исключение.
-    public void add(T num) throws Exception {
-        int a;
-        nums.add(a);
-        if () {
-            System.out.println("");
+    public void add(Object integer, T num) throws Exception {
+        int i = 0;
+        int count = 0;
+        for(T a : nums) {
+            if (a != null) {
+                count++;
+                System.out.println("Элемент " + a + " добавлен в массив");
+            } else count += 0;
+        }
+        if (nums.length < count) {
+            System.out.println("Ошибка. Нет места в массиве!");
+            Exception ex = new Exception();
+            throw ex;
         }else {
-            exs}
+            this.nums[i] = num;
+            i++;
+        }
         }
 
     //метод int length() возвращает текущее количество элементов
     public int lenght(){
-        System.out.println("В массиве "+ nums.length+ " елементов.");
-        return nums.length;
-    };
+        int count = 0;
+        for(T i : nums){
+            if(!(i == null)){
+                count++;
+            } else count+=0;
+        }
+        System.out.println("В массиве "+ count + " елементов.");
+        return count;
+    }
+
 
     //метод double average() - подсчет среднего арифметического среди элементов массива
     public double average(){
         int i = 0;
-        int a = (int) nums[i];
+        int a = (int) nums[i].intValue();
         if (i< nums.length) {
             a = a + a;
             a++;
@@ -53,30 +70,37 @@ public class NumBox <T extends Number> {
 
     //метод double sum() - сумма всех элементов массива.
     public double sum(){
-        int i = 0;
-        int a = (int) nums[i];
-        if (i< nums.length) {
-            a = a + a;
-            a++;
-        } System.out.println("Сумма всех элементов массива = " + a);
-        return a;
+        double sum1 = 0;
+        for (int i = 0; i < nums.length; i++) {
+            sum1 = (sum1 + nums[i].doubleValue());
+
+
+        //int i = 0;
+       // int a = (int) nums[i].intValue();
+       // if (i< nums.length) {
+        //    a = a + a;
+        //    a++;
+        } System.out.println("Сумма всех элементов массива = " + sum1);
+        return sum1;
     }
 
     //метод T max() - максимальный элемент массива.
-    public T max(){
-        int max = 0;
+    public int max(){
+        int max1 = 0;
         for (int i = 0; i < nums.length; i++) {
-            if (nums[i] > max) {
-                max = nums[i];
+            if (get(max1).intValue() < get(i).intValue()) {
+                max1 = i;      //временное значение, для замены местами
             }
         }
-        //max - максимальное значение
 
-        return ;
+          // почему выдает исключение: NullPointerException ???
+        //for (int i = 0; i < nums.length; i++) {
+         //   if (nums[i].intValue() > max) {
+        //        max = nums[i].intValue();
+        //    }
+
+        return max1;
     }
-
-
-
 
 }
 
