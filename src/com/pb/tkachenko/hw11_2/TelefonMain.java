@@ -1,5 +1,7 @@
 package com.pb.tkachenko.hw11_2;
 
+import javafx.beans.binding.MapExpression;
+
 import java.io.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -10,7 +12,7 @@ import static sun.nio.ch.IOUtil.load;
 public class TelefonMain {
 
     private static Object String;
-
+    
     public static void main(String[] args) throws Exception {
 
         //
@@ -60,7 +62,7 @@ public class TelefonMain {
         // Сортировка по adres
         System.out.println("Вывод всех контактов с сортировкой по адресу. ");
         contacts.sort(Comparator.comparing(obj -> obj.adres));
-        System.out.println("Сортировка по адресу:" + contacts);
+        System.out.println("Сортировка по адресу: " + contacts);
 
         //редактирование элемента
 
@@ -77,13 +79,18 @@ public class TelefonMain {
 
     }
 
+        //запись в файл всех данных: saveTel2
+
+
+
+
         //запись в файл всех данных: saveTel в текстовом файле phone.txt --метод
         private static void saveTel() throws Exception{
-            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("phone.txt")));
-            for(Map.Entry<String,String> k: tel.entrySet()){
-                writer.write(k.getKey() + " " + k.getValue()+System.lineSeparator());
-            }
-            writer.close();
+        BufferedWriter writer = new BufferedWriter(new FileWriter(new File("phone.txt")));
+        for(Map.Entry<String,String> k: tel.entrySet()){
+        writer.write(k.getKey() + " " + k.getValue()+System.lineSeparator());
+        }
+        writer.close();
         }
 
         //загрузка из файла всех данных: из текстового файла phone.txt -- метод

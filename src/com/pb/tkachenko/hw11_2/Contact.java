@@ -37,4 +37,15 @@ public class Contact {
 
         System.out.println(FIO + ", " + bDate + ", " + adres + ", " + tel + ", " + ChangeDate);
         }
+
+    @Override
+    public String toString() {
+        return "Contact{" +
+                "FIO='" + FIO + '\'' +
+                ", bDate='" + bDate + '\'' +
+                ", adres='" + adres + '\'' +
+                ", tel=" + tel +
+                ", ChangeDate=" + ChangeDate +
+                '}';
     }
+}
