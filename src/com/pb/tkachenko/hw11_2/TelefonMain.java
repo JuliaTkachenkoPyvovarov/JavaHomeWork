@@ -14,6 +14,11 @@ public class TelefonMain {
 
     private static Object String;
 
+    //@FunctionalInterface
+    //public interface T {
+    //    int metod();
+    //}
+
     public TelefonMain() throws IOException {
     }
 
@@ -61,6 +66,8 @@ public class TelefonMain {
         //Comparator<Message> comparator = Comparator.comparing(obj -> obj.getId());
         contacts.sort(Comparator.comparing(obj -> obj.getFIO()));
         System.out.println("Сортировка по ФИО:" + contacts);
+
+
 
         // Сортировка по adres
         System.out.println("Вывод всех контактов с сортировкой по адресу. ");
