@@ -20,24 +20,22 @@ class ConsoleColors {
 
 
 public class ThreadTask {
-    //==============================================================================
-    //Класс для потока Писателя (производитель)
-    //==============================================================================
+
+    //Производитель
     static class Writer implements Runnable {
 
         private final List<Integer> buffer; //массив буфер
         private long timeSleep = 1000;      //время сна по дефолту
         private String color;               //цвет потока
 
-        //конструктор для потока
-        public Writer(List<Integer> buffer, long Pause, String color) {
+
+        public Writer(List<Integer> buffer, long Pause, String color) { //конструктор
             this.buffer = buffer;
             this.timeSleep = Pause;
             this.color = color;
         }
 
-        //запуск
-        public void run() {
+        public void run() { //запуск
             String threadName = Thread.currentThread().getName();
             synchronized (buffer) {  //синхронизация по работе с буфером
                 try {
@@ -58,10 +56,10 @@ public class ThreadTask {
                         }
                         //если параметр не менялся - буфер полон ждем поток для Читателя
                         if (prov == -1) {
-                            System.out.println(color + "Буфер полон, Производитель " + ConsoleColors.ANSI_PURPLE + "ждет 3 сек.");
+                            System.out.println(color + "Буфер заполнен, Производитель " + ConsoleColors.ANSI_PURPLE + "ждет 7 сек.");
 
                             buffer.notify();
-                            buffer.wait(4000);
+                            buffer.wait(7000);
                         } else {
                             Thread.sleep(seconds * timeSleep);
                             buffer.wait(timeSleep);
@@ -71,24 +69,20 @@ public class ThreadTask {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } finally {
-                    //По завершении работы выводим сообщение об окончании работы Писателя-Производителя
-                    System.out.println(color + threadName + ConsoleColors.ANSI_RED + " процесс завершен.");
+                    //Итог
+                    System.out.println(color + threadName + ConsoleColors.ANSI_RED + "Процесс окончен.");
                 }
             }
         }
     }
 
-    //==============================================================================
-    //Класс для потока Читателя (потребитель)
-    //==============================================================================
-    static class Reader implements Runnable {
+    //Потребительstatic class Reader implements Runnable {
 
         private final List<Integer> buffer; //массив буфер
-        private long timeSleep = 1000;      //время сна по дефолту
+        private long timeSleep = 3000;      //время сна по дефолту - 3 сек
         private String color;               //цвет потока
 
-        //конструктор для потока
-        public Reader(List<Integer> buffer, long Pause, String color) {
+        public Reader(List<Integer> buffer, long Pause, String color) { //конструктор
             this.buffer = buffer;
             this.timeSleep = Pause;
             this.color = color;
@@ -116,9 +110,9 @@ public class ThreadTask {
                         }
                         //если параметр не менялся - значений нет - буфер пустой, ждем поток Писателя (производителя)
                         if (prov == -1) {
-                            System.out.println(color + "Буфер пустой, Читатель " + ConsoleColors.ANSI_PURPLE + "ждет 3 сек.");
+                            System.out.println(color + "Буфер пустой, Читатель " + ConsoleColors.ANSI_PURPLE + "ждет 5 сек.");
                             buffer.notify();
-                            buffer.wait(2000);
+                            buffer.wait(4000);
                         } else {
                             Thread.sleep(seconds * timeSleep);
                             buffer.wait(timeSleep);
@@ -128,16 +122,14 @@ public class ThreadTask {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } finally {
-                    //По завершению работы сообщение что процесс Читателя (потребителя) завершил работу
-                    System.out.println(color + threadName + ConsoleColors.ANSI_RED + " процесс завершен.");
+                    //Итог работі потребителя
+                    System.out.println(color + threadName + ConsoleColors.ANSI_RED + " процесс окончен.");
                 }
             }
         }
     }
 
-    //==============================================================================
-    //Основной метод для демонстрации работы потоков Писателя (производителя) и Читателя (потребителя)
-    //==============================================================================
+    //Main- как оно работает
     public static void main(String[] args) {
 
         //буффер для работы Производителя и Потребителя
@@ -145,7 +137,7 @@ public class ThreadTask {
         List<Integer> buffers = Arrays.asList(0, 0, 0, 0, 0);
 
         //Печатаем значения пустого буфера
-        System.out.println("Наш пустой буффер: " + buffers);
+        System.out.println("Пустой буффер: " + buffers);
 
         //Создаем процессы Читателя (потребителя) и Писателя (производителя)
         Thread reader = new Thread(new Reader(buffers, 800, ConsoleColors.ANSI_YELLOW));
@@ -156,7 +148,7 @@ public class ThreadTask {
         reader.start();
 
         //сообщение что процессы стартовал, а программа отработала
-        System.out.println("Стартовали" + ConsoleColors.ANSI_GREEN + " <Производитель> " + ConsoleColors.ANSI_RESET + "и" + ConsoleColors.ANSI_YELLOW + " <Потребитель>");
+        //System.out.println(ConsoleColors.ANSI_GREEN + " Производитель " + ConsoleColors.ANSI_RESET + "и" + ConsoleColors.ANSI_YELLOW + " Потребитель");
     }
 }
 
