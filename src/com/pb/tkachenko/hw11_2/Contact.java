@@ -55,7 +55,7 @@ public class Contact implements Serializable {
         return bDate;
     }
 
-    public void setbDate(String bDate) {
+    public static void setbDate(String bDate) {
         this.bDate = bDate;
     }
 
@@ -92,5 +92,6 @@ public class Contact implements Serializable {
                 ", tel=" + tel +
                 ", ChangeDate=" + ChangeDate +
                 '}';
-    }
-}
+    };
+};
+

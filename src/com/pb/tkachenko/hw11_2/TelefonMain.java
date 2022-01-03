@@ -55,7 +55,7 @@ public class TelefonMain {
         Integer findTel = Integer.valueOf(scan.nextLine());
         Contact result = contacts.get(findTel);
         if (result != null) {
-            System.out.println("Поиск по номеру телефона: телефон " + findTel + " принадлежит " + result.FIO);
+            System.out.println("Поиск по номеру телефона: телефон " + findTel + " принадлежит " + result.getFIO());
         } else
             System.out.println("Такого номера нет в телефонной книге.");
 

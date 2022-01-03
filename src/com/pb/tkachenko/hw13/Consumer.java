@@ -55,4 +55,8 @@ public class Consumer implements Runnable {  //Потребитель
             }
         }
     }
+
+    @Override
+    public void run() {
+    }
 }
