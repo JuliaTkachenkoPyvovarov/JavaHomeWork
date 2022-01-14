@@ -5,28 +5,20 @@ import java.util.Scanner;
 public class Library {
     public static void main (String[] args){
         Book book1 = new Book("Приключения", "Иванов И.И.", "2000 г." );
-        Book book2 = new Book();
-        Book book3 = new Book();
-        book1.name = "Приключения";
-        book2.name = "Словарь";
-        book3.name = "Энциклопедия";
-        book1.autor = "Иванов И.И.";
-        book2.autor = "Сидоров А.В.";
-        book3.autor = "Гусев К.В.";
-        book1.year = "2000 г.";
-        book2.year = "1980 г.";
-        book3.year = "2010 г.";
+        Book book2 = new Book("Словарь", "Сидоров А.В.", "1988" );
+        Book book3 = new Book("Энциклопедия", "Гусев К.В.", "2020");
+
+        Reader reader1 = new Reader("Читатель1", "1",  "Психологический","11.03.1981", "0677896543");
+        Reader reader2 = new Reader("Читатель2", "2", "Филологический", "20.02.1985", "0982994165");
         //int count = 3;
 
-        String setFio = "Петров В.В.";
+        reader1.returnBook(book1);
+        reader1.returnBook(book2);
+        reader1.returnBook(5);
 
-        book1.takeBook(setFio,3);
-        book2.takeBook(book1.name, book2.name, book3.name);
-        book3.takeBook(book1.name+" ("+book1.autor + book1.year + ") ", book2.name + " ("+book2.autor + book2.year + ") ", book3.autor + " ("+book3.autor + book3.year + ") ");
-
-        book1.returnBook(setFio, 3);
-        book2.returnBook(book1.name, book2.name, book3.name);
-        book3.returnBook(book1.name+" ("+book1.autor + book1.year + ") ", book2.name + " ("+book2.autor + book2.year + ") ", book3.autor + " ("+book3.autor + book3.year + ") ");
+        reader2.takeBook(book1);
+        reader2.takeBook(book2);
+        reader2.takeBook(2);
 
     }
 
