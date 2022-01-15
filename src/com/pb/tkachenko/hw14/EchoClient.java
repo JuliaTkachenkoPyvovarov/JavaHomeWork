@@ -23,8 +23,8 @@ public class EchoClient {
 
         System.out.println("Соединение установлено.");
 
-        BufferedReader inSer = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-        PrintWriter outSer = new PrintWriter(socket.getOutputStream(), true);
+        BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+        PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
         BufferedReader inConsole = new BufferedReader(new InputStreamReader(System.in));
 
         String dataFromUser, dataFromServer;
@@ -32,8 +32,8 @@ public class EchoClient {
         // Основной цикл отправки сообщений серверу
         System.out.println("Введите текст сообщения: ");
         while ((dataFromUser = inConsole.readLine()) != null) {
-            outSer.println(dataFromUser);
-            dataFromServer = inSer.readLine();
+            out.println(dataFromUser);
+            dataFromServer = in.readLine();
             System.out.println(dataFromServer);
             if ("Выход.".equalsIgnoreCase(dataFromUser)) {
                 break;
@@ -42,7 +42,7 @@ public class EchoClient {
 
         String str;
         // Входим в цикл чтения, что нам ответил сервер
-        while ((str = inSer.readLine()) != null) {
+        while ((str = in.readLine()) != null) {
             // Если пришел ответ “Выход.”, то заканчиваем цикл
             if (str.equals("Выход.")) {
                 break;
@@ -50,12 +50,12 @@ public class EchoClient {
             // Печатаем ответ от сервера на консоль для проверки
             System.out.println(str);
             // Посылаем ему "Выход." для окончания "разговора"
-            outSer.println("Выход.");
+            out.println("Выход.");
         }
 
-        outSer.close();
-        inSer.close();
-        outSer.close();
+        out.close();
+        in.close();
+        out.close();
         socket.close();
     }
 
