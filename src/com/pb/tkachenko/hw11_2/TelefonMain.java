@@ -41,7 +41,7 @@ public class TelefonMain {
         System.out.print("Введите телефон: ");
         List<String> newTel = Collections.singletonList(scan.nextLine());
 
-        Contact newContact = new Contact(newFIO, newBDate, newAdres, (ArrayList<java.lang.String>) newTel);
+        Contact newContact = new Contact(newFIO, newBDate, newAdres, newTel);
         contacts.add(newContact);
 
         //удаление элемента: принимает телефон
