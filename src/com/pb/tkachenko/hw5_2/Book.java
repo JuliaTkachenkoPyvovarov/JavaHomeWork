@@ -1,14 +1,10 @@
-package com.pb.tkachenko.hw5;
-
-import java.lang.reflect.Array;
-import java.util.Arrays;
+package com.pb.tkachenko.hw5_2;
 
 public class Book {
-    public String year;
-    public String name;
-    public String autor;
-    public String yeare;
-    public int count;
+    String name;
+    String autor;
+    String year;
+    int count;
 
     public Book(String name, String autor, String year) {
         this.name = name;
@@ -30,8 +26,7 @@ public class Book {
 
     public Book() {
     }
-
-
-}
+};
 
 //Класс Book хранит такую информацию о книге: название, автор книги, год издания
+
